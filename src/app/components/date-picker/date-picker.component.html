@@ -1,0 +1,32 @@
+<div class="date-picker">
+    <h2>
+                    you selected:
+                    {{selectedDate.getDate()}}-{{selectedDate.getMonth()+1}}-{{selectedDate.getFullYear()}}
+    </h2><br>
+    <div class="date-picker-calendar">
+        <header>
+            <span class="left" (click)="prevMonth()">
+                &#8810;
+            </span>
+            <span class="h_center">
+                <i class="months">{{ currentMonth }}</i>
+                <i class="years">{{ currentYear }}</i>
+            </span>
+            <span class="next" (click)="nextMonth()">
+                &#8811;
+            </span>
+        </header>
+        <hr class="hr" />
+        <div class="cells">
+            <div class="calenderCells">
+                <span class="cell day-header" *ngFor="let dayname of dayOfWeek;">{{ dayname }}</span><!--
+                --><span class="cell blank" *ngFor="let b of beforDays;">{{ b.date }}</span><!--
+                --><span class="cell day"
+                 *ngFor="let d of day;" 
+                 (click)="selectDate(d.timestamp)"
+                 [class.selected]="d.timestamp === selectedDate.getTime()"> {{ d.date }}</span><!--
+                --><span class="cell after" *ngFor="let f of afterDay;">{{ f.date }}</span>
+            </div>
+        </div>
+    </div>
+</div>
